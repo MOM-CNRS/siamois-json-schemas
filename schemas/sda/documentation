@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/documentation.json",
+  "$id": "https://siamois.eu/schemas/sda/documentation.json",
   "title": "Feuille documentation – Documentation archéologique",
   "description": "Description d’un document, d’un lot de documents ou d’un dossier numérique de documentation archéologique. Une ligne correspond à une unité de documentation.",
   "type": "object",
