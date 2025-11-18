@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/relation.json",
+  "$id": "https://siamois.eu/schemas/sda/relation.json",
   "title": "Feuille relation – Relations entre unités d’enregistrement",
   "description": "Description d’une relation entre deux unités d’enregistrement (UE) d’une même opération archéologique. Une ligne correspond à une relation.",
   "type": "object",
