@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/VAB.json",
+  "title": "Feuille VAB – Vestiges anthropobiologiques",
+  "description": "Description d’un squelette ou d’un lot de restes anthropobiologiques. Une ligne correspond à un VAB.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+    },
+
+    "identifiant_VAB": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant du vestige anthropobiologique (squelette ou lot de restes) dans l’opération. Associé à code_OA_NAT, forme le code d’inventaire."
+    },
+
+    "code_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de l’UE désignant la sépulture d’où provient le squelette ou le lot de restes, tel que défini dans la feuille UE."
+    },
+
+    "code_objet-lot": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Code d’inventaire de l’objet contenant (vase, sarcophage…), défini dans la feuille \"mobilier\". Champ facultatif."
+    },
+
+    "matiere": {
+      "type": "string",
+      "const": "organique",
+      "description": "Valeur obligatoire : \"organique\"."
+    },
+
+    "classe": {
+      "type": "string",
+      "const": "vestiges anthropobiologiques",
+      "description": "Valeur obligatoire : \"vestiges anthropobiologiques\"."
+    },
+
+    "determination_VAB": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identification du squelette ou du lot de restes (squelette adulte en connexion, dépôt secondaire, incinération, etc.)."
+    },
+
+    "nombre_element_VAB": {
+      "type": "number",
+      "description": "Nombre d’os ou de fragments composant le squelette ou le lot. Au moins l’un des champs \"nombre_element_VAB\" ou \"poids_VAB\" doit être renseigné."
+    },
+
+    "poids_VAB": {
+      "type": "number",
+      "description": "Poids des ossements. Au moins l’un des champs \"nombre_element_VAB\" ou \"poids_VAB\" doit être renseigné."
+    },
+
+    "unite_poids_VAB": {
+      "type": "string",
+      "enum": ["gramme", "kilogramme"],
+      "description": "Unité de poids des ossements (gramme ou kilogramme). Obligatoire si \"poids_VAB\" est renseigné."
+    },
+
+    "prelevement_VAB": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Nature des prélèvements (ADN, isotopes, etc.) et objectifs, qu’il y ait ou non eu analyse pendant l’opération."
+    },
+
+    "alerte_sanitaire_VAB": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Indication de la présence de tissus mous, phanères, contexte pollué, contenant en plomb, etc."
+    },
+
+    "versement_VAB": {
+      "type": "string",
+      "enum": ["oui", "déjà remis", "non conservé", "traitement", "disparu"],
+      "description": "Statut du squelette ou du lot par rapport aux données scientifiques de l’archéologie versées à l’État."
+    },
+
+    "potentiel_etude_VAB": {
+      "type": "string",
+      "enum": ["oui", "non"],
+      "description": "Indique si le VAB présente un potentiel pour de nouvelles études (oui/non) selon la définition donnée dans le référentiel."
+    },
+
+    "commentaire_potentiel_etude_VAB": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Commentaire explicatif sur le potentiel d’étude (facultatif)."
+    },
+
+    "identifiant_contenant": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Identifiant du contenant au versement. Si plusieurs contenants, les lister séparés par &. Doit être unique dans l’opération tous vestiges confondus."
+    },
+
+    "lieu_de_conservation": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Lieu de conservation si le VAB n’est pas physiquement remis à l’État après versement des données scientifiques."
+    },
+
+    "informations_complementaires_VAB": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Description complémentaire, regroupant éventuellement plusieurs champs de la base de terrain (nom_champ : valeur & …). Champ facultatif."
+    }
+  },
+
+  "required": [
+    "code_OA_NAT",
+    "identifiant_VAB",
+    "code_UE",
+    "matiere",
+    "classe",
+    "determination_VAB",
+    "versement_VAB",
+    "potentiel_etude_VAB"
+  ],
+
+  "allOf": [
+    {
+      "anyOf": [
+        { "required": ["nombre_element_VAB"] },
+        { "required": ["poids_VAB"] }
+      ],
+      "description": "Au moins l’un des champs \"nombre_element_VAB\" ou \"poids_VAB\" doit être renseigné."
+    },
+    {
+      "if": { "required": ["poids_VAB"] },
+      "then": { "required": ["unite_poids_VAB"] },
+      "description": "Si un poids est renseigné, l’unité de poids doit être indiquée."
+    }
+  ]
+}
