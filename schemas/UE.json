@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/UE.json",
+  "title": "Feuille UE – Unité d’enregistrement",
+  "description": "Description d’une unité d’enregistrement (UE). Une ligne correspond à une UE.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l'opération archéologique (n° de région + n° d’ordre)."
+    },
+    "type_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Type de l’UE (US, UF, fait, carré, tranchée, zone, secteur, entité graphique…)."
+    },
+    "identifiant_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant unique de l’UE dans l’opération (numérique ou alphanumérique)."
+    },
+    "nature_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Nature de l’UE : positive, négative, englobante…"
+    },
+    "description_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Description physique de l’UE (forme, couleur, granulométrie, composition…)."
+    },
+    "interpretation_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Interprétation fonctionnelle ou culturelle de l’UE."
+    },
+    "Zsup_UE": {
+      "type": "number",
+      "description": "Altitude maximale de l’UE (facultatif)."
+    },
+    "Zinf_UE": {
+      "type": "number",
+      "description": "Altitude minimale de l’UE (facultatif)."
+    },
+    "chronologie_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Période chronologique de l’UE, ou « indéterminée »."
+    },
+    "TPQ_UE": {
+      "type": "number",
+      "description": "Terminus post quem, sous la forme -aaaa ou aaaa (facultatif)."
+    },
+    "TAQ_UE": {
+      "type": "number",
+      "description": "Terminus ante quem, sous la forme -aaaa ou aaaa (facultatif)."
+    },
+    "informations_complementaires_UE": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Informations complémentaires (facultatif)."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "type_UE",
+    "identifiant_UE",
+    "nature_UE",
+    "description_UE",
+    "interpretation_UE",
+    "chronologie_UE"
+  ]
+}
