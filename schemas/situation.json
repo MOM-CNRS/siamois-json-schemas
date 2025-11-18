@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/situation.json",
+  "title": "Feuille situation – Localisation de l’opération archéologique",
+  "description": "Chaque entrée décrit soit une parcelle (milieu terrestre/subaquatique), soit une localisation en milieu maritime.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/$defs/SituationTerrestre"
+      },
+      {
+        "$ref": "#/$defs/SituationMaritime"
+      }
+    ]
+  },
+  "$defs": {
+    "SituationTerrestre": {
+      "type": "object",
+      "additionalProperties": false,
+      "title": "SituationTerrestre",
+      "description": "Localisation par parcelle en milieu terrestre ou subaquatique.",
+      "properties": {
+        "code_OA_NAT": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+        },
+        "identifiant_parcelle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Identifiant de la parcelle : section cadastrale & numéro de parcelle, éventuellement précédés du code INSEE, séparés par &."
+        },
+        "nom_commune_OA": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Nom de la commune sur laquelle se situe la parcelle au commencement de l’opération."
+        },
+        "numero_INSEE_commune_OA": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Numéro INSEE de la commune."
+        },
+        "lieu_dit_OA": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "Nom du lieu-dit où l'opération est menée. Au moins l’un des champs 'lieu_dit_OA' ou 'adresse_OA' doit être renseigné."
+        },
+        "adresse_OA": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "Adresse postale de l'opération. Au moins l’un des champs 'lieu_dit_OA' ou 'adresse_OA' doit être renseigné."
+        },
+        "informations_complementaires_parcelle": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "Informations complémentaires sur la parcelle (facultatif)."
+        }
+      },
+      "required": [
+        "code_OA_NAT",
+        "identifiant_parcelle",
+        "nom_commune_OA",
+        "numero_INSEE_commune_OA"
+      ],
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "lieu_dit_OA": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "lieu_dit_OA"
+              ]
+            },
+            {
+              "properties": {
+                "adresse_OA": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "adresse_OA"
+              ]
+            }
+          ],
+          "description": "Au moins l’un des champs 'lieu_dit_OA' ou 'adresse_OA' doit être renseigné (non vide)."
+        }
+      ]
+    },
+    "SituationMaritime": {
+      "type": "object",
+      "additionalProperties": false,
+      "title": "SituationMaritime",
+      "description": "Localisation en milieu maritime (opération suivie par le Drassm).",
+      "properties": {
+        "code_OA_NAT": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre) défini par le Drassm avant le début de l’opération."
+        },
+        "carte_SHOM_numero": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Numéro de la carte Shom utilisée pour localiser l’opération."
+        },
+        "intitule_lieu_OA": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Intitulé précis du lieu de l’opération archéologique selon l’information transmise par le Drassm."
+        },
+        "latitude_OA": {
+          "type": "number",
+          "description": "Latitude du centroïde de l’opération, en coordonnées géographiques standardisées pour le milieu maritime."
+        },
+        "longitude_OA": {
+          "type": "number",
+          "description": "Longitude du centroïde de l’opération, en coordonnées géographiques standardisées pour le milieu maritime."
+        },
+        "profondeur_OA": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "Profondeur maximale d’intervention."
+        },
+        "nom_commune_OA": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Nom de la commune au large de laquelle se situe l’opération, selon l’information transmise par le Drassm."
+        },
+        "numero_INSEE_commune_OA": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32767,
+          "description": "Numéro INSEE de la commune au large de laquelle se situe l’opération, selon l’information transmise par le Drassm."
+        },
+        "informations_complementaires_OA": {
+          "type": "string",
+          "maxLength": 32767,
+          "description": "Informations complémentaires sur l’opération (facultatif)."
+        }
+      },
+      "required": [
+        "code_OA_NAT",
+        "carte_SHOM_numero",
+        "intitule_lieu_OA",
+        "latitude_OA",
+        "longitude_OA",
+        "profondeur_OA",
+        "nom_commune_OA",
+        "numero_INSEE_commune_OA"
+      ]
+    }
+  }
+}
