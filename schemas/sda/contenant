@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ContenantArcheologique",
+  "title": "contenant",
+    "$id": "https://siamois.eu/schemas/sda/contenant.json",
   "description": "Schema pour les contenants d'opérations archéologiques (Ministère de la Culture - France)",
   "type": "object",
   "properties": {
