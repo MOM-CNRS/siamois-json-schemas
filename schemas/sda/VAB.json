@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/VAB.json",
+  "$id": "https://siamois.eu/schemas/sda/VAB.json",
   "title": "Feuille VAB – Vestiges anthropobiologiques",
   "description": "Description d’un squelette ou d’un lot de restes anthropobiologiques. Une ligne correspond à un VAB.",
   "type": "object",
