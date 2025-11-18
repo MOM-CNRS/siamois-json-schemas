@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContenantArcheologique",
+  "description": "Schema pour les contenants d'opérations archéologiques (Ministère de la Culture - France)",
+  "type": "object",
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "description": "Code complet de l'opération archéologique (format : région + numéro d'ordre). Ex: '24-123'",
+    },
+    "identifiant_contenant": {
+      "type": "string",
+      "description": "Identifiant unique du contenant (alpha-numérique).",
+      "minLength": 1
+    },
+    "type_taille_contenant": {
+      "type": "string",
+      "description": "Type et taille du contenant (format : 'type Lxlxh' ou 'type X litres'). Voir liste des types autorisés."
+    },
+    "poids_contenant": {
+      "type": "number",
+      "description": "Poids en kg (à renseigner uniquement si > 12 kg)."
+    },
+    "matiere": {
+      "type": "string",
+      "description": "Matière(s) du contenu. Valeurs autorisées : 'organique', 'minéral', 'terre crue', 'terre cuite', 'métal', 'verrerie', 'synthétique', 'autre', 'indéterminé'. Séparer par '&' si multiple."
+    },
+    "classe": {
+      "type": "string",
+      "description": "Classe(s) de l'objet selon la matière. Format : '[matière] sous-classe'. Séparer par '&' si multiple. Voir documentation pour la liste complète.",
+    },
+    "nature_prelevement": {
+      "type": "string",
+      "description": "Nature du prélèvement (charbon, sédiment, etc.). Séparer par '&' si multiple."
+    },
+    "categorie_documentation": {
+      "type": "string",
+      "description": "Catégorie(s) de documentation. Valeurs autorisées : 'document écrit alpha-numérique et base de données', 'document graphique', 'document photographique et audiovisuel', 'moulage', 'autre document'. Séparer par '&' si multiple."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "identifiant_contenant",
+    "type_taille_contenant",
+    "matiere",
+    "classe"
+  ],
+  "additionalProperties": false
+}
