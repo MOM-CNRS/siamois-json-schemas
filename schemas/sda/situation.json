@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/situation.json",
+  "$id": "https://siamois.eu/schemas/sda/situation.json",
   "title": "Feuille situation – Localisation de l’opération archéologique",
   "description": "Chaque entrée décrit soit une parcelle (milieu terrestre/subaquatique), soit une localisation en milieu maritime.",
   "type": "array",
