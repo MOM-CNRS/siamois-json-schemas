@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/relation.json",
+  "title": "Feuille relation – Relations entre unités d’enregistrement",
+  "description": "Description d’une relation entre deux unités d’enregistrement (UE) d’une même opération archéologique. Une ligne correspond à une relation.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+    },
+
+    "code_UE1": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de la première UE à mettre en relation, tel que défini dans la feuille UE."
+    },
+
+    "type_relation_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Type de relation entre les deux UE (stratigraphique, inclusif, etc.), selon la typologie définie par le responsable scientifique."
+    },
+
+    "code_UE2": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de la deuxième UE à mettre en relation, tel que défini dans la feuille UE."
+    },
+
+    "informations_complementaires_relation": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Informations complémentaires sur la relation (champ facultatif)."
+    }
+  },
+
+  "required": [
+    "code_OA_NAT",
+    "code_UE1",
+    "type_relation_UE",
+    "code_UE2"
+  ]
+}
