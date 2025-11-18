@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/mobilier.json",
+  "title": "Feuille mobilier – Inventaire du mobilier archéologique",
+  "description": "Description d’un objet ou d’un lot découvert lors de l’opération archéologique. Une ligne correspond à un objet ou à un lot.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° région + n° d’ordre)."
+    },
+    "identifiant_objet-lot": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant unique de l’objet ou du lot dans l’opération (numérique ou alphanumérique)."
+    },
+    "objet-lot": {
+      "type": "string",
+      "enum": [
+        "objet",
+        "lot"
+      ],
+      "description": "Indique si la ligne décrit un objet individualisé ou un lot."
+    },
+    "matiere": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Matière de l’objet ou du lot (organique, minéral, terre cuite, métal, verrerie, synthétique, autre, indéterminé…). Si composite, matières séparées par &."
+    },
+    "classe": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Classe de l’objet ou du lot en fonction de la matière. Si objet composite, classes séparées par &."
+    },
+    "determination_objet-lot": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identification / description de l’objet ou du lot selon les usages du responsable scientifique."
+    },
+    "chronologie_objet-lot": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Période chronologique de l’objet ou du lot, ou plusieurs périodes séparées par « ou » si nécessaire."
+    },
+    "TPQ_objet-lot": {
+      "type": "number",
+      "description": "Terminus post quem, -aaaa pour avant J.-C., aaaa pour après J.-C. (champ facultatif)."
+    },
+    "nombre_element_objet-lot": {
+      "type": "number",
+      "description": "Nombre d’éléments ou fragments composant l’objet ou le lot. Au moins l’un des champs « nombre_element_objet-lot » ou « poids_objet-lot » doit être renseigné."
+    },
+    "poids_objet-lot": {
+      "type": "number",
+      "description": "Poids de l’objet ou du lot. Au moins l’un des champs « nombre_element_objet-lot » ou « poids_objet-lot » doit être renseigné."
+    },
+    "unite_poids_objet-lot": {
+      "type": "string",
+      "enum": [
+        "gramme",
+        "kilogramme"
+      ],
+      "description": "Unité de poids (gramme ou kilogramme). Obligatoire si « poids_objet-lot » est renseigné."
+    },
+    "etat_sanitaire_objet-lot": {
+      "type": "string",
+      "enum": [
+        "stable",
+        "stabilisé",
+        "instable",
+        "critique"
+      ],
+      "description": "État sanitaire du mobilier au moment de l’inventaire."
+    },
+    "alerte_sanitaire_objet-lot": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Type de préservation particulière, danger sanitaire (plomb, amiante, pollution…), ou information de contexte sanitaire (facultatif)."
+    },
+    "versement_objet-lot": {
+      "type": "string",
+      "enum": [
+        "oui",
+        "déjà remis",
+        "non conservé",
+        "traitement",
+        "disparu"
+      ],
+      "description": "Statut de versement de l’objet ou du lot dans les données scientifiques de l’archéologie versées à l’État."
+    },
+    "proposition_conservation_selective_objet-lot": {
+      "type": "string",
+      "enum": [
+        "non conservation",
+        "conservation"
+      ],
+      "description": "Proposition de conservation ou de non conservation après versement à l’État."
+    },
+    "commentaire_proposition_conservation_selective_objet-lot": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Commentaire justifiant la proposition de non conservation ou précisant le choix (champ facultatif)."
+    },
+    "code_UE": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de l’UE de provenance, tel que défini dans la feuille UE."
+    },
+    "interet_particulier_objet-lot": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Description de l’intérêt particulier (objet remarquable, ensemble clos, contexte de référence, code UE d’ensemble, etc.). Champ facultatif."
+    },
+    "date_decouverte_objet-lot": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "Date (aaaa-mm-jj) de mise au jour de l’objet ou du lot. Indispensable en cas de changement de propriétaire pendant l’intervention, ou pour les objets exceptionnels."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "identifiant_objet-lot",
+    "objet-lot",
+    "matiere",
+    "classe",
+    "determination_objet-lot",
+    "chronologie_objet-lot",
+    "etat_sanitaire_objet-lot",
+    "versement_objet-lot",
+    "proposition_conservation_selective_objet-lot",
+    "code_UE"
+  ],
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "required": [
+            "nombre_element_objet-lot"
+          ]
+        },
+        {
+          "required": [
+            "poids_objet-lot"
+          ]
+        }
+      ],
+      "description": "Au moins l’un des champs « nombre_element_objet-lot » ou « poids_objet-lot » doit être renseigné."
+    },
+    {
+      "if": {
+        "required": [
+          "poids_objet-lot"
+        ]
+      },
+      "then": {
+        "required": [
+          "unite_poids_objet-lot"
+        ]
+      },
+      "description": "Si un poids est renseigné, l’unité doit être précisée."
+    }
+  ]
+}
