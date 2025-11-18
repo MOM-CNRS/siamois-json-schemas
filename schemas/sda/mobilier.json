@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/mobilier.json",
+  "$id": "https://siamois.eu/schemas/sda/mobilier.json",
   "title": "Feuille mobilier – Inventaire du mobilier archéologique",
   "description": "Description d’un objet ou d’un lot découvert lors de l’opération archéologique. Une ligne correspond à un objet ou à un lot.",
   "type": "object",
