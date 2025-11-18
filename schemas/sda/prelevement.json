@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/prelevement.json",
+  "$id": "https://siamois.eu/schemas/sda/prelevement.json",
   "title": "Feuille prelevement – Prélèvements versés à l'État",
   "description": "Description d’un prélèvement archéologique versé à l'État dans l’attente de son étude complète. Une ligne correspond à un prélèvement.",
   "type": "object",
