@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/OA.json",
+  "title": "Feuille OA – Opération archéologique",
+  "type": "object",
+  "description": "Carte d'identité d'une opération archéologique (une opération par fichier).",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "code_OA_NAT",
+      "description": "Code complet de l’opération archéologique."
+    },
+    "region_facade_maritime_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "region_facade_maritime_OA",
+      "description": "Nom de la région et éventuelle façade maritime."
+    },
+    "type_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "type_OA",
+      "description": "Type de l’opération archéologique."
+    },
+    "intitule_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "intitule_OA",
+      "description": "Intitulé de l’opération archéologique."
+    },
+    "organisme_rattachement_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "organisme_rattachement_OA",
+      "description": "Opérateur(s) responsables, séparés par des &."
+    },
+    "responsable_scientifique_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "responsable_scientifique_OA",
+      "description": "Nom & prénom du responsable scientifique."
+    },
+    "date_debut_terrain_OA": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "minLength": 10,
+      "maxLength": 10,
+      "title": "date_debut_terrain_OA",
+      "description": "Date de début d’intervention (aaaa-mm-jj)."
+    },
+    "date_fin_terrain_OA": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "minLength": 10,
+      "maxLength": 10,
+      "title": "date_fin_terrain_OA",
+      "description": "Date de fin d’intervention (aaaa-mm-jj)."
+    },
+    "chronologie_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "chronologie_OA",
+      "description": "Périodes chronologiques, séparées par des &."
+    },
+    "interpretations_concernees_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "interpretations_concernees_OA",
+      "description": "Interprétations, séparées par des &."
+    },
+    "code_document_georeferencement_OA": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "title": "code_document_georeferencement_OA",
+      "description": "Code du document de géoréférencement."
+    },
+    "informations_complementaires_OA": {
+      "type": "string",
+      "maxLength": 32767,
+      "title": "informations_complementaires_OA",
+      "description": "Informations complémentaires (facultatif)."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "region_facade_maritime_OA",
+    "type_OA",
+    "intitule_OA",
+    "responsable_scientifique_OA",
+    "date_debut_terrain_OA",
+    "date_fin_terrain_OA"
+  ]
+}
