@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/prelevement.json",
+  "title": "Feuille prelevement – Prélèvements versés à l'État",
+  "description": "Description d’un prélèvement archéologique versé à l'État dans l’attente de son étude complète. Une ligne correspond à un prélèvement.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+    },
+    "identifiant_prelevement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant unique du prélèvement dans l’opération. Associé à code_OA_NAT, forme le code d’inventaire."
+    },
+    "nature_prelevement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Nature du prélèvement : sédiment, charbon, prélèvement sur objet ou VAB, etc."
+    },
+    "auteur_prelevement": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Nom & prénom de la personne ayant réalisé le prélèvement si spécialiste ou conservateur-restaurateur (facultatif)."
+    },
+    "objectif_prelevement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Objectif scientifique et type d’analyse envisagée, description succincte du protocole."
+    },
+    "poids_volume_prelevement": {
+      "type": "number",
+      "description": "Poids, volume ou longueur du prélèvement."
+    },
+    "unite_poids_volume_prelevement": {
+      "type": "string",
+      "enum": [
+        "kilogramme",
+        "gramme",
+        "litre",
+        "centilitre",
+        "millilitre",
+        "mètre",
+        "centimètre"
+      ],
+      "description": "Unité de poids, de volume ou de longueur du prélèvement."
+    },
+    "code_element_provenance": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de l’UE, de l’objet, du lot, du squelette ou du lot de restes sur lequel le prélèvement a été effectué. Si plusieurs, codes séparés par &."
+    },
+    "condition_preservation_prelevement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Condition de conservation après versement : pièce sèche, milieu humide, réfrigéré, etc."
+    },
+    "date_validite_prelevement": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}$",
+      "minLength": 7,
+      "maxLength": 7,
+      "description": "Date (aaaa-mm) à partir de laquelle l’État peut jeter ou réaffecter le prélèvement."
+    },
+    "identifiant_contenant": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant du ou des contenants où est stocké le prélèvement. Si plusieurs, identifiants séparés par &. Identifiant(s) unique(s) dans l’opération."
+    },
+    "lieu_de_conservation": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Lieu de conservation si le prélèvement n’est pas physiquement remis à l’État."
+    },
+    "informations_complementaires_prelevement": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Description plus complète du prélèvement ou informations supplémentaires (facultatif)."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "identifiant_prelevement",
+    "nature_prelevement",
+    "objectif_prelevement",
+    "code_element_provenance",
+    "condition_preservation_prelevement",
+    "date_validite_prelevement",
+    "identifiant_contenant"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "poids_volume_prelevement"
+        ]
+      },
+      "then": {
+        "required": [
+          "unite_poids_volume_prelevement"
+        ]
+      },
+      "description": "Si un poids/volume/longueur est renseigné, l’unité doit être indiquée."
+    }
+  ]
+}
