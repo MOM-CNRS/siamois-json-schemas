@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/UE.json",
+  "$id": "https://siamois.eu/schemas/sda/UE.json",
   "title": "Feuille UE – Unité d’enregistrement",
   "description": "Description d’une unité d’enregistrement (UE). Une ligne correspond à une UE.",
   "type": "object",
