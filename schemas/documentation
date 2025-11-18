@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/documentation.json",
+  "title": "Feuille documentation – Documentation archéologique",
+  "description": "Description d’un document, d’un lot de documents ou d’un dossier numérique de documentation archéologique. Une ligne correspond à une unité de documentation.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+    },
+    "identifiant_documentation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Identifiant unique du document, du lot ou du dossier numérique dans l’opération. Associé à code_OA_NAT, forme le code d’inventaire."
+    },
+    "titre_documentation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Titre court du document, du lot ou du dossier numérique."
+    },
+    "categorie_documentation": {
+      "type": "string",
+      "enum": [
+        "document écrit alpha-numérique et base de données",
+        "document graphique",
+        "document photographique et audiovisuel",
+        "moulage",
+        "autre document"
+      ],
+      "description": "Catégorie de documentation, selon les catégories définies par l’arrêté du 7 février 2022."
+    },
+    "type_documentation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Type(s) du document, du lot ou du dossier numérique. Si plusieurs types, les indiquer à la suite séparés par & (esperluette)."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "identifiant_documentation",
+    "titre_documentation",
+    "categorie_documentation",
+    "type_documentation"
+  ]
+}
