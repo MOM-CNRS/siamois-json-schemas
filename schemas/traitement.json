@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/traitement.json",
+  "$id": "https://siamois.eu/schemas/sda/traitement.json",
   "title": "Feuille traitement – Traitements appliqués aux vestiges et prélèvements",
   "description": "Description d’un traitement particulier appliqué à un vestige mobilier, un vestige immobilier mobilisé, un vestige anthropobiologique ou un prélèvement. Une ligne correspond à un type de traitement.",
   "type": "object",
