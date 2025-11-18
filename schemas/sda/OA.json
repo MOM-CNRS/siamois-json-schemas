@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://siamois.eu/schemas/OA.json",
+  "$id": "https://siamois.eu/schemas/sda/OA.json",
   "title": "Feuille OA – Opération archéologique",
   "type": "object",
   "description": "Carte d'identité d'une opération archéologique (une opération par fichier).",
