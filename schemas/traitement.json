@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/traitement.json",
+  "title": "Feuille traitement – Traitements appliqués aux vestiges et prélèvements",
+  "description": "Description d’un traitement particulier appliqué à un vestige mobilier, un vestige immobilier mobilisé, un vestige anthropobiologique ou un prélèvement. Une ligne correspond à un type de traitement.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° de région + n° d’ordre)."
+    },
+    "code_element_traite": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code d’inventaire de l’objet ou lot (feuille « mobilier »), du squelette ou lot de restes (feuille VAB) ou du prélèvement (feuille « prelevement ») concerné par le traitement."
+    },
+    "type_traitement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Type de traitement subi : stabilisation, consolidation, marquage, analyse ADN, radiographie, mise en état pour étude, etc. Inclure les produits utilisés, concentrations, etc."
+    },
+    "code_rapport": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Code d’inventaire du rapport lié au traitement (étude spécialisée, datation, rapport de conservation curative…) tel que défini dans la feuille « documentation »."
+    },
+    "periode_traitement": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}(&[0-9]{4}-[0-9]{2}-[0-9]{2})?$",
+      "minLength": 10,
+      "maxLength": 21,
+      "description": "Date de début et, le cas échéant, de fin du traitement au format aaaa-mm-jj, séparées par & si deux dates. Si le traitement a eu lieu sur une seule journée, indiquer seulement la date."
+    },
+    "lieu_traitement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Lieu où a été effectué le traitement, identifié de manière unique (laboratoire, service…)."
+    },
+    "nom_responsable_traitement": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Nom & prénom du responsable du traitement (facultatif)."
+    },
+    "identifiant_lie_au_traitement": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Identifiant éventuellement donné au vestige, au prélèvement ou au traitement par le responsable du traitement pour la durée de celui-ci (facultatif)."
+    },
+    "informations_complementaires_traitement": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Description plus complète du traitement, de ses modalités et de ses effets (facultatif)."
+    }
+  },
+  "required": [
+    "code_OA_NAT",
+    "code_element_traite",
+    "type_traitement",
+    "periode_traitement",
+    "lieu_traitement"
+  ]
+}
