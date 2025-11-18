@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://siamois.eu/schemas/proprietaire.json",
+  "title": "Feuille proprietaires – Informations sur les propriétaires des parcelles",
+  "description": "Chaque ligne décrit un ou plusieurs propriétaires et les parcelles concernées, avec leurs dates d'acquisition.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+
+    "code_OA_NAT": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Code complet de l’opération archéologique (n° région + n° d’ordre)."
+    },
+
+    "proprietaire_parcelle": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Nom & prénom du propriétaire, ou nom de la personne morale. Si plusieurs propriétaires, les séparer par '|'."
+    },
+
+    "identifiant_parcelle-date_acquisition": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "pattern": "^[^|]+&[0-9]{4}-[0-9]{2}-[0-9]{2}(\\|[^|]+&[0-9]{4}-[0-9]{2}-[0-9]{2})*$",
+      "description": "Liste des parcelles et dates d'acquisition. Chaque parcelle est décrite avec & (commune INSEE facultative) section & numéro & date (aaaa-mm-jj). Plusieurs parcelles séparées par '|'."
+    },
+
+    "adresse_postale_proprietaire": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32767,
+      "description": "Adresse(s) postale(s) du ou des propriétaires. Pour plusieurs propriétaires, indiquer 'Nom Adresse' & 'Nom Adresse'."
+    },
+
+    "informations_complementaires_parcelle": {
+      "type": "string",
+      "maxLength": 32767,
+      "description": "Informations complémentaires (champ facultatif)."
+    }
+  },
+
+  "required": [
+    "code_OA_NAT",
+    "proprietaire_parcelle",
+    "identifiant_parcelle-date_acquisition",
+    "adresse_postale_proprietaire"
+  ]
+}
